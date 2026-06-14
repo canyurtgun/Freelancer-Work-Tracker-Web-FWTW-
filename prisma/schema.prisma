@@ -1,0 +1,57 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String        @id @default(uuid())
+  username  String        @unique
+  password  String
+  fullName  String
+  role      String        @default("user")
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  projects  ProjectUser[]
+}
+
+model Project {
+  id           String        @id @default(uuid())
+  title        String
+  customerName String?
+  content      String?
+  price        Float         @default(0)
+  deposit      Float         @default(0)
+  startDate    DateTime?
+  deliveryDate DateTime?
+  status       String        @default("planning")
+  notes        String?
+  completedAt  DateTime?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  extras       Extra[]
+  users        ProjectUser[]
+}
+
+model ProjectUser {
+  id        String  @id @default(uuid())
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  sortOrder Int     @default(0)
+
+  @@unique([projectId, userId])
+}
+
+model Extra {
+  id        String  @id @default(uuid())
+  label     String
+  price     Float   @default(0)
+  status    String  @default("pending")
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  projectId String
+}
