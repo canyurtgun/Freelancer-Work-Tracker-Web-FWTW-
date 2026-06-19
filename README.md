@@ -1,8 +1,14 @@
 # ◆ Freelance İş Takip
 
+> **👤 Öğrenci Bilgileri**
+> | Alan | Değer |
+> |------|-------|
+> | **Ad Soyad** | Muhammet Can Yurtgün |
+> | **Öğrenci Numarası** | 24010501114 |
+
 Freelance projelerinizi, müşterilerinizi, ödemelerinizi ve çalışan atamalarınızı tek bir panelden yönetmenizi sağlayan **full-stack web uygulaması**.
 
-> **Teknoloji Yığını:** React 19 · Express 5 · Prisma ORM · SQLite · JWT · Framer Motion · Recharts
+> **Teknoloji Yığını:** Node.js · React 19 · Express 5 · Prisma ORM · SQLite · JWT · Framer Motion · Recharts
 
 ---
 
@@ -35,6 +41,8 @@ Freelance projelerinizi, müşterilerinizi, ödemelerinizi ve çalışan atamala
 - [Production Dağıtımı](#-production-dağıtımı)
 - [Sorun Giderme](#-sorun-giderme)
 - [Lisans](#-lisans)
+- [GitHub Bağlantısı](#-github-bağlantısı)
+- [Kaynakça](#-kaynakça)
 
 ---
 
@@ -67,6 +75,22 @@ Uygulama **koyu tema** ile çalışır. Temel ekranlar:
 3. **Proje Oluşturma / Düzenleme Modalı** — Çoklu alan formu, ekstra satır yönetimi, sürükle-bırak çalışan ataması
 4. **Kullanıcı Yönetim Paneli** — Tablo görünümü, CRUD işlemleri, şifre sıfırlama
 5. **Uyarılar Modalı** — Gecikmiş ve yaklaşan teslimatların otomatik tespiti
+
+## Anasayfa
+
+<img width="1897" height="2002" alt="screencapture-localhost-5000-2026-06-20-00_49_00" src="https://github.com/user-attachments/assets/c54c6413-0d27-4647-9e48-e0141ec5ec1d" />
+
+## Giriş Paneli
+
+<img width="1920" height="919" alt="screencapture-localhost-5000-2026-06-20-00_50_59" src="https://github.com/user-attachments/assets/3b5cce7a-d78f-4371-889e-0d97cf672929" />
+
+## Proje Oluşturma & Düzenleme Modalı
+
+<img width="868" height="1237" alt="image" src="https://github.com/user-attachments/assets/9e6bff36-01de-4a04-ae90-b75da57774fa" />
+
+## Kullanıcılar Listesi
+
+<img width="854" height="301" alt="image" src="https://github.com/user-attachments/assets/850b5229-b15e-4099-b3c7-f549eb77a879" />
 
 ---
 
@@ -757,41 +781,6 @@ Tüm stiller `App.css` içinde tanımlıdır. Temel CSS değişkenleri:
    NODE_ENV=production node index.js
    ```
 
-### PM2 ile Çalıştırma (Önerilir)
-
-```bash
-# PM2 kurulumu
-npm install -g pm2
-
-# Uygulamayı başlatma
-pm2 start index.js --name "freelance-tracker"
-
-# Otomatik yeniden başlatma
-pm2 startup
-pm2 save
-```
-
-### Nginx Reverse Proxy (İsteğe Bağlı)
-
-```nginx
-server {
-    listen 80;
-    server_name example.com;
-
-    location / {
-        proxy_pass http://127.0.0.1:5000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-}
-```
-
 ### Güvenlik Notları
 
 - 🔐 `JWT_SECRET` değerini production'da mutlaka değiştirin
@@ -841,6 +830,31 @@ npx prisma studio
 ```
 
 Bu komut `http://localhost:5555` adresinde bir veritabanı yönetim arayüzü açar.
+
+---
+
+## 🔗 GitHub Bağlantısı
+
+> 📌 **Proje GitHub Deposu:** [https://github.com/canyurtgun/Freelancer-Work-Tracker-Web-FWTW-/tree/main](https://github.com/canyurtgun/Freelancer-Work-Tracker-Web-FWTW-/tree/main)
+>
+
+---
+
+## 📚 Kaynakça
+
+Projede yararlanılan kaynaklar ve bağlantılar:
+
+| Kaynak | Bağlantı |
+|--------|----------|
+| React Resmi Dokümantasyonu | https://react.dev |
+| Express.js Resmi Dokümantasyonu | https://expressjs.com |
+| Prisma ORM Dokümantasyonu | https://www.prisma.io/docs |
+| Framer Motion Dokümantasyonu | https://www.framer.com/motion |
+| Recharts Dokümantasyonu | https://recharts.org |
+| JWT (jsonwebtoken) | https://github.com/auth0/node-jsonwebtoken |
+| bcryptjs | https://github.com/dcodeIO/bcrypt.js |
+| SQLite Resmi Sitesi | https://www.sqlite.org |
+| Antigravity | https://antigravity.google/ |
 
 ---
 
